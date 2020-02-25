@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{# 使用length过滤器获取movies变量的长度 #}
+<p>{{ movies|length }} Titles</p>
+<ul class="movie-list">
+    {% for movie in movies %}
+    <li>{{ movie.title }} - {{ movie.year }}</li>
+    <span class="float-right">
+        <a class="imdb" href="https://www.imdb.com/find?q={{movie.title}}" target="_blank" title="在IMDB中查找此电影">IMDB</a>
+    </span>
+    {% endfor %}
+
+</ul>
+
+<footer>
+    <small>&copy; 2020 <a href="www.baidu.com">北京网络职业技术学院-人工智能学科</a></small>
+</footer>
+
+<img class="yeweitu" src="{{ url_for('static',filename='images/1.jpg')}}" alt="">
+{% endblock %}
