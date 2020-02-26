@@ -155,7 +155,7 @@ def edit(movie_id):
         movie.title = title
         movie.year = year
         db.session.commit()
-        flash('电影信息已经更新')
+        flash('电影信息已更新')
         return redirect(url_for('index'))
     return render_template('edit.html', movie=movie)
 
@@ -165,11 +165,9 @@ def edit(movie_id):
 def settings():
     if request.method == 'POST':
         name = request.form['name']
-
         if not name or len(name) > 20:
             flash('输入错误')
             return redirect(url_for('settings'))
-
         current_user.name = name
         db.session.commit()
         flash('设置name成功')

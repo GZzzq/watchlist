@@ -5,8 +5,8 @@
 {# 表单 #}
 {% if current_user.is_authenticated %}
 <form method="POST">
-    电影名 <input type="text" name="title" autocomplete="off" required>
-    年份 <input type="text" name="year" autocomplete="off" required>
+    电影名: <input type="text" name="title" autocomplete="off" required>
+    年份: <input type="text" name="year" autocomplete="off" required>
     <input type="submit" class="btn" name="submit" value="添加">
 </form>
 {% endif %}
