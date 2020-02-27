@@ -1,7 +1,7 @@
 import unittest
 
-from app import app, db, Movie, User
-
+from watchlist import app,db
+from watchlist.model import Movie,User
 
 class WatchlistTestCase(unittest.TestCase):
     def setUp(self):

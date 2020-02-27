@@ -101,18 +101,16 @@ def admin(username, password):
 
 
 # Flask-login 初始化操作
-Login_manager = LoginManager(app)  # 实例化扩展类
-
-
-@Login_manager.user_loader
+login_manager = LoginManager(app)  # 实例化扩展类
+@login_manager.user_loader
 def load_user(user_id):  # 创建用户加载回调函数，接受用户ID作为参数
     user = User.query.get(int(user_id))
     return user
 
 
 #
-# LoginManager.login_view = 'login'
-
+login_manager.login_view = 'login'
+login_manager.login_message= "未登录"
 # 首页
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -217,7 +215,15 @@ def logout():
 
 @app.errorhandler(404)  # 传入要处理的错误代码
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return render_template('error/404.html'), 404
+
+@app.errorhandler(400)
+def page_not_found(e):
+    return render_template('error/400.html'), 400
+
+@app.errorhandler(500)
+def page_not_found(e):
+    return render_template('error/500.html'), 500
 
 
 @app.context_processor  # 模板上下文处理函数
