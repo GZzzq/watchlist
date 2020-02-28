@@ -47,6 +47,8 @@ nav ul{
 }
 nav li{
     float: left;
+    display: flex;
+    align-items: center
 }
 nav li a{
     display: block;
@@ -60,6 +62,8 @@ nav li a:hover{
 }
 .float-right{
     float: right;
+    display: inline;
+    margin: 2px 5px;
 }
 .vdb{
     font-size: 12px;
