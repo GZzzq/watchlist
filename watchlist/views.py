@@ -39,6 +39,7 @@ def edit(movie_id):
         title = request.form['title']
         year = request.form['year']
 
+
         if not title or not year or len(year) > 4 or len(title) > 60:
             flash('输入错误')
             return redirect(url_for('edit'), movie_id=movie_id)
@@ -49,6 +50,8 @@ def edit(movie_id):
         flash('电影信息已更新')
         return redirect(url_for('index'))
     return render_template('edit.html', movie=movie)
+
+
 
 
 @app.route('/settings', methods=['GET', 'POST'])
@@ -96,6 +99,22 @@ def login():
         flash('用户名或密码输入错误')
         return redirect(url_for('login'))
     return render_template('login.html')
+
+# 写博文
+# @app.route('/content',methods=['GET', 'POST'])
+# @login_required
+# def content():
+#     if request.method == 'POST':
+#         title = request.form.get('title')
+#         content = request.form.get('content')
+#         author = request.form.get('author')
+#         pubdate = request.form.get('pubdate')
+#
+#         ariticles = Ariticles(title=title,content=content, author=author,pubdate=pubdate)
+#         db.session.add(ariticles)  # 添加到数据库会话
+#         db.session.commit()  # 提交数据库会话
+#         flash('数据创建成功')
+
 
 
 # 用户登出
