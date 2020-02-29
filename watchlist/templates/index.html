@@ -18,7 +18,7 @@
 <!--            <a class="vbd"-->
 <!--                href="http://v.baidu.com/v?word={{ movie.title }}&ct=301989888&rn=67&pn=0&db=0&s=0&fbl=800&ie=utf-8&oq=nnkd&f=3&rsp=0"-->
 <!--                target="_blank" title="在百度视频中查找此电影">百度视频</a>-->
-            <a href="/" type="submit" class="btn btn-default" >去写博文</a>
+            <a href="{{ url_for('content',movie_id=movie.id) }}" type="submit" class="btn btn-default" >查看博文</a>
         </span>
         {% if current_user.is_authenticated %}
         <span class="float-right">

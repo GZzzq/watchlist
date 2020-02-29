@@ -4,7 +4,7 @@
     <module name="watchlist" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
-    <option name="SDK_HOME" value="E:\实训三\watchlist\env\Scripts\python.exe" />
+    <option name="SDK_HOME" value="E:\venv\envenv\Scripts\python.exe" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     <option name="IS_MODULE_SDK" value="false" />
     <option name="ADD_CONTENT_ROOTS" value="true" />

@@ -38,7 +38,8 @@ def edit(movie_id):
     if request.method == 'POST':
         title = request.form['title']
         year = request.form['year']
-
+        author = request.form['author']
+        content = request.form['content']
 
         if not title or not year or len(year) > 4 or len(title) > 60:
             flash('输入错误')
@@ -46,12 +47,14 @@ def edit(movie_id):
 
         movie.title = title
         movie.year = year
+        movie.author = author
+        movie.content = content
+        movie = Movie(author=author, content=content)  # 创建记录
+        db.session.add(movie)  # 添加到数据库会话
         db.session.commit()
-        flash('电影信息已更新')
+        flash('博文信息已更新')
         return redirect(url_for('index'))
     return render_template('edit.html', movie=movie)
-
-
 
 
 @app.route('/settings', methods=['GET', 'POST'])
@@ -100,20 +103,15 @@ def login():
         return redirect(url_for('login'))
     return render_template('login.html')
 
+
 # 写博文
-# @app.route('/content',methods=['GET', 'POST'])
+@app.route('/content/<int:movie_id>',methods=['GET', 'POST'])
 # @login_required
-# def content():
-#     if request.method == 'POST':
-#         title = request.form.get('title')
-#         content = request.form.get('content')
-#         author = request.form.get('author')
-#         pubdate = request.form.get('pubdate')
-#
-#         ariticles = Ariticles(title=title,content=content, author=author,pubdate=pubdate)
-#         db.session.add(ariticles)  # 添加到数据库会话
-#         db.session.commit()  # 提交数据库会话
-#         flash('数据创建成功')
+def content(movie_id):
+
+    movies = Movie.query.get_or_404(movie_id)
+
+    return render_template('content.html',movies=movies)
 
 
 
