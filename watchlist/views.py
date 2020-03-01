@@ -110,6 +110,8 @@ def login():
 def content(movie_id):
 
     movies = Movie.query.get_or_404(movie_id)
+    # if request.method == 'POST':
+    #     return request.form['content']
 
     return render_template('content.html',movies=movies)
 
